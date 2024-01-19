@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Booru Tag Parser
 // @namespace    http://average.website
-// @version      1.1.7
+// @version      1.1.6
 // @description  Copy current post tags and rating on boorus and illustration2vec in to the clipboard for easy import in to a program or another booru.
 // @author       William Moodhe
 // @downloadURL  https://github.com/JetBoom/boorutagparser/raw/master/boorutagparser.user.js
@@ -192,7 +192,7 @@ function copyBooruTags(noRating)
     // danbooru-like-new
     insertTags(tags, '.artist-tag-list > li > span > a.search-tag', 'artist:');
     insertTags(tags, '.copyright-tag-list > li > span > a.search-tag', 'copyright:');
-    insertTags(tags, '.meta-tag-list > li > span > a.search-tag', 'meta:');
+    //insertTags(tags, '.meta-tag-list > li > span > a.search-tag', 'meta:');
     insertTags(tags, '.character-tag-list > li > span > a.search-tag', 'character:');
     insertTags(tags, '.general-tag-list > li > span > a.search-tag', '');
 

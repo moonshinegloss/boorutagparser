@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Booru Tag Parser
 // @namespace    http://average.website
-// @version      1.1.6
+// @version      1.1.7
 // @description  Copy current post tags and rating on boorus and illustration2vec in to the clipboard for easy import in to a program or another booru.
 // @author       William Moodhe
 // @downloadURL  https://github.com/JetBoom/boorutagparser/raw/master/boorutagparser.user.js
@@ -190,10 +190,14 @@ function copyBooruTags(noRating)
     // Instead of having a list of boorus and their tags and tag structures I just make a big catch-all.
     
     // danbooru-like-new
-    insertTags(tags, '#tag-list li.tag-type-3 > a.search-tag', 'series:');
-    insertTags(tags, '#tag-list li.tag-type-1 > a.search-tag', 'creator:');
-    insertTags(tags, '#tag-list li.tag-type-4 > a.search-tag', 'character:');
-    insertTags(tags, '#tag-list li.tag-type-0 > a.search-tag', '');    
+    insertTags(tags, '.artist-tag-list > li > span > a.search-tag', 'artist:');
+    insertTags(tags, '.copyright-tag-list > li > span > a.search-tag', 'copyright:');
+    insertTags(tags, '.meta-tag-list > li > span > a.search-tag', 'meta:');
+    insertTags(tags, '.character-tag-list > li > span > a.search-tag', 'character:');
+    insertTags(tags, '.general-tag-list > li > span > a.search-tag', '');
+
+    // ul.general-tag-list li span a.search-tag
+
 
     // danbooru-like-old
     insertTags(tags, '#tag-list li.category-3 > a.search-tag', 'series:');
@@ -324,7 +328,7 @@ function doCopyAll(callback)
 
 function copyTagsToClipboard(tags)
 {
-    GM_setClipboard(tags.join('\n'));
+    GM_setClipboard(tags.join(', '));
 
     var buttontext = '';
 
